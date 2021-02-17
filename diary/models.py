@@ -19,4 +19,4 @@ class Student(models.Model):
     address = models.CharField(max_length=50, blank=True, null=True)
     phone_number = models.IntegerField(max_length=10, blank=True, null=True)
     birthday = models.DateField(default=date.today())
-    image = models.ImageField(default='')
+    image = models.ImageField(default='image_student.jpg')

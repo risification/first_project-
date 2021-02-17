@@ -64,10 +64,10 @@
       <div class="col-lg-4">
         <div class="card shadow-sm">
           <div class="card-header bg-transparent text-center">
-            <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
-            {% for students in students%}
+             {% for students in students %}
+            <img class="profile_img" src="{{students.image.url}}" alt="student dp">
               <h3>{{students.name}} {{students.last_name}}</h3>
-            {%endfor%}
+            {% endfor %}
           </div>
           <div class="card-body">
             <p class="mb-0"><strong class="pr-1">Student ID:</strong>321000001</p>
