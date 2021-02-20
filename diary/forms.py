@@ -1,8 +1,10 @@
 from django import forms
-from diary.models import Student
+from django.contrib.auth.forms import UserCreationForm
 
 
-class StudentForm(forms.ModelForm):
-    class Meta:
-        model = Student
-        fields = '__all__'
+
+
+class SignupForm(UserCreationForm):
+    email = forms.EmailField(max_length=200, help_text="Required")
+
+
