@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from datetime import date
 
@@ -15,6 +16,7 @@ class Profile_student(models.Model):
         ('2', '2'),
         ('3', '3')
     )
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last = models.CharField(max_length=30)
     phone = models.IntegerField(max_length=10)
@@ -25,6 +27,7 @@ class Profile_student(models.Model):
 
 
 class Profile_teacher(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     gender_type = (
         ('M','M'),
         ('F','F')

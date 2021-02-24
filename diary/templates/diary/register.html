@@ -1,0 +1,8 @@
+<form method="POST" action="">
+    {% csrf_token %}
+    {{register.username}}
+    {{register.type_user}}
+    {{register.password1}}
+    {{register.password2}}
+    <input type="submit" name="submit">
+</form>

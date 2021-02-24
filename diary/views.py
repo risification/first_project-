@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from .forms import SignupForm
 from .models import Profile_student, Profile_teacher, Lesson_school
 
 
@@ -17,4 +19,15 @@ def teacher_profile_page(request, teacher_id):
     teacher = Profile_teacher.objects.get(id=teacher_id)
     return render(request, 'diary/profile_teacher.html', {'teacher': teacher})
 
-
+def register_page(request):
+    register = SignupForm()
+    if request.method == 'POST':
+        register = SignupForm(request.POST)
+        if register.is_valid():
+            if register.cleaned_data['type_user'] == 'student':
+                Profile_student.objects.create(user= request.user,phone= 0,)
+            else:
+                Profile_teacher.objects.create(first_name='sdfdsf',phone=0,user=request.user)
+            register.save()
+            return redirect('school_magazine')
+    return render(request,'diary/register.html',{'register':register})
