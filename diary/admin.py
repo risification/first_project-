@@ -4,6 +4,5 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register([Profile_student,Profile_parent,Profile_teacher])
-
+admin.site.register([Profile_student,Lesson_school,  Profile_teacher])
 

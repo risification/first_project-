@@ -1,0 +1,21 @@
+{% extends 'diary/base.html' %}
+{% block content  %}
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Name Lesson</th>
+        <th scope="col">Points</th>
+        <th scope="col">Average</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for magazine in magazine%}
+    <tr>
+        <td>{{magazine.name_lesson}}</td>
+        <td>{{magazine.points}}</td>
+        <td>{{magazine.average}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{%endblock%}
