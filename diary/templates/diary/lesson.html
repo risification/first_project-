@@ -1,0 +1,16 @@
+{% extends 'diary/base.html' %}
+{% block content  %}
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Name Lesson</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for lessons in lessons%}
+    <tr>
+            <td>{{lessons.name_lesson}}</td>
+    </tr>{% endfor %}
+    </tbody>
+</table>
+{%endblock%}

@@ -4,18 +4,24 @@
     <thead class="thead-dark">
     <tr>
         <th scope="col">Name Lesson</th>
-        <th scope="col">Points</th>
         <th scope="col">Average</th>
     </tr>
     </thead>
     <tbody>
-    {%for magazine in magazine%}
     <tr>
         <td>{{magazine.name_lesson}}</td>
-        <td>{{magazine.points}}</td>
-        <td>{{magazine.average}}</td>
+        <td>{{total}}</td>
+
     </tr>
-    {% endfor %}
     </tbody>
+
 </table>
+Points{%for point in points%}
+            {{point.points}}
+{% endfor %}
+<form method="POST" action="">
+        {%csrf_token%}
+        {{form}}
+        <input type="submit" name="submit">
+    </form>
 {%endblock%}
