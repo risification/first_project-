@@ -3,13 +3,13 @@
 <table class="table">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">Name Lesson</th>
+        <th scope="col">Full Name Students</th>
     </tr>
     </thead>
     <tbody>
-    {%for lessons in lessons%}
+    {%for student in students%}
     <tr>
-        <td><a href="{% url 'magazine' lessons.id%}">{{lessons.name_lesson}}</td>
+        <td>{{student.first_name}} {{student.last}}</td>
     </tr>{% endfor %}
     </tbody>
 </table>
