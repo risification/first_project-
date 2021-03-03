@@ -9,8 +9,9 @@
     <tbody>
     {%for lessons in lessons%}
     <tr>
-        <td><a href="{% url 'magazine' lessons.id%}">{{lessons.name_lesson}}</td>
-    </tr>{% endfor %}
+        <td>{{lessons.name_lesson}}</td>
+    </tr>
+    {% endfor %}
     </tbody>
 </table>
-{%endblock%}
+{% endblock %}

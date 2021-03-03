@@ -4,24 +4,16 @@
     <thead class="thead-dark">
     <tr>
         <th scope="col">Name Lesson</th>
-        <th scope="col">Average</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>{{magazine.name_lesson}}</td>
-        <td>{{total}}</td>
-
     </tr>
     </tbody>
-
 </table>
-Points{%for point in points%}
-            {{point.points}}
+{% for stud in student %}
+<a href="{% url 'student' stud.id%}">{{ stud.first_name }}</a>
 {% endfor %}
-<form method="POST" action="">
-        {%csrf_token%}
-        {{form}}
-        <input type="submit" name="submit">
-    </form>
+
 {%endblock%}

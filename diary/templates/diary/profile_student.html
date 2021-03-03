@@ -1,28 +1,28 @@
 {% extends 'diary/base.html' %}
 {% block content %}
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+      id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="well">
     <div id="myTabContent" class="tab-content">
-      <div class="tab-pane active in" id="home">
-        <form id="tab">
-            <label>First Name</label>
-            <input type="text" value="{{student.first_name}}" class="input-xlarge">
-            <label>Last Name</label>
-            <input type="text" value="{{student.last}}" class="input-xlarge">
-            <label>Phone number</label>
-            <input type="text" value="{{student.phone}}" class="input-xlarge">
-            <label>Email</label>
-            <input type="text" value="{{student.email}}" class="input-xlarge">
-            <label>Birthday</label>
-            <input type="text" value="{{student.birthday}}" class="input-xlarge">
-            <label>Gender</label>
-            <input type="text" value="{{student.gender}}" class="input-xlarge">
-        </form>
-      </div>
-  </div>
+        <div class="tab-pane active in" id="home">
+            <form id="tab">
+                <label>First Name</label>
+                <input type="text" value="{{student.first_name}}" class="input-xlarge">
+            </form>
+        </div>
+    </div>
 </div>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form}}
+    <input name="submit" type="submit">
+</form>
+{% for point in points %}
+    {{point.points}}
+{% endfor %}
+average {{total}}
 {% endblock %}
