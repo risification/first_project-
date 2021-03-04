@@ -7,5 +7,10 @@ class Name_lesson(admin.ModelAdmin):
     list_display = ['name_lesson']
 
 
-admin.site.register([Profile_student, Profile_teacher, Points_school])
+class Points_lesson(admin.ModelAdmin):
+    list_display = ['lesson', 'student', 'points']
+
+
+admin.site.register([Profile_student, Profile_teacher])
 admin.site.register(Lesson_school, Name_lesson)
+admin.site.register(Points_school, Points_lesson)

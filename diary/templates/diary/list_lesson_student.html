@@ -1,0 +1,6 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+{% for lessons in lesson %}
+<a href="{% url 'student_points' lessons.id%}">{{lessons.name_lesson}}</a>
+{% endfor %}
+{% endblock %}

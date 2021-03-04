@@ -6,20 +6,10 @@ from .models import Profile_student, Profile_teacher, Lesson_school
 
 # Create your views here.
 def magazine_school(request, id_lesson):
-    total = 0
     magazine = Lesson_school.objects.get(id=id_lesson)
     student = magazine.student.all()
-    print(student)
-    points = magazine.points_school_set.all()
-    for i in points:
-        total += i.points
-    form = PointForm(initial={'magazine': magazine, 'user': request.user})
-    if request.method == 'POST':
-        form = PointForm(request.POST)
-        if form.is_valid():
-            form.save()
     return render(request, 'diary/school_magazine.html',
-                  {'magazine': magazine, 'form': form, 'points': points, 'student': student})
+                  {'magazine': magazine, 'student': student})
 
 
 def lesson(request):
@@ -91,3 +81,22 @@ def student_point(request, id_student):
     except ZeroDivisionError:
         return render(request, 'diary/profile_student.html',
                       {'student': student, 'form': form, 'total': 0, 'points': points})
+
+
+def list_lesson(request):
+    lesson = Lesson_school.objects.all()
+    return render(request,'diary/list_lesson_student.html',{'lesson':lesson})
+
+
+def points_views(request, id_student):
+    total = 0
+    student = Profile_student.objects.get(id=id_student)
+    points = student.points_school_set.all()
+    try:
+        for i in points:
+            total += i.points
+        return render(request, 'diary/points_views.html',
+                      {'student': student, 'points': points, 'total': round(total / len(points), 1)})
+    except ZeroDivisionError:
+        return render(request, 'diary/profile_student.html',
+                      {'student': student, 'points': points, 'total': 0})

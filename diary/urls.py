@@ -11,4 +11,6 @@ urlpatterns = [
     path('login_page/', login_page, name='login'),
     path('logout/', logout_page, name='logout'),
     path('students/', all_students, name='students'),
+    path('views_points/<int:id_student>/', points_views,name='student_points'),
+    path('list_lesson_student/',list_lesson,name='list_lesson_student')
 ]
