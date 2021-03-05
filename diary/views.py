@@ -85,7 +85,7 @@ def student_point(request, id_student):
 
 def list_lesson(request):
     lesson = Lesson_school.objects.all()
-    return render(request,'diary/list_lesson_student.html',{'lesson':lesson})
+    return render(request, 'diary/list_lesson_student.html', {'lesson': lesson})
 
 
 def points_views(request, id_student):
