@@ -12,7 +12,6 @@ def magazine_school(request, id_lesson):
                   {'magazine': magazine, 'student': student})
 
 
-
 def lesson(request):
     lessons = Lesson_school.objects.all()
     return render(request, 'diary/lesson.html', {'lessons': lessons})
