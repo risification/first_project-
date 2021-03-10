@@ -12,6 +12,7 @@ def magazine_school(request, id_lesson):
                   {'magazine': magazine, 'student': student})
 
 
+
 def lesson(request):
     lessons = Lesson_school.objects.all()
     return render(request, 'diary/lesson.html', {'lessons': lessons})
@@ -34,20 +35,6 @@ def all_students(request):
     return render(request, 'diary/all_students.html', {'students': students})
 
 
-def register_page(request):
-    register = SignupForm()
-    if request.method == 'POST':
-        register = SignupForm(request.POST)
-        if register.is_valid():
-            if register.cleaned_data['type_user'] == 'student':
-                Profile_student.objects.create(user=request.user, )
-            else:
-                Profile_teacher.objects.create(first_name='sdfdsf', user=request.user)
-            register.save()
-            return redirect('lessons')
-    return render(request, 'diary/register.html', {'register': register})
-
-
 def login_page(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -68,7 +55,7 @@ def student_point(request, id_student):
     student = Profile_student.objects.get(id=id_student)
     points = student.points_school_set.all()
     form = PointForm(initial={'student': student, 'user': request.user,
-                              'lesson': Lesson_school.objects.get(student=request.user.profile_student)})
+                              'lesson': Lesson_school.objects.get(student__id=id_student)})
     try:
         for i in points:
             total += i.points
@@ -83,9 +70,10 @@ def student_point(request, id_student):
                       {'student': student, 'form': form, 'total': 0, 'points': points})
 
 
-def list_lesson(request):
-    lesson = Lesson_school.objects.all()
-    return render(request, 'diary/list_lesson_student.html', {'lesson': lesson})
+def list_lesson(request, id_student):
+    student = Profile_student.objects.get(id=id_student)
+    lesson = student.lesson_school_set.all()
+    return render(request, 'diary/list_lesson_student.html', {'lessons': lesson, 'student': student})
 
 
 def points_views(request, id_student):

@@ -9,10 +9,16 @@ class Profile_student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.first_name
+
 
 class Profile_teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.first_name
 
 
 class Lesson_school(models.Model):
